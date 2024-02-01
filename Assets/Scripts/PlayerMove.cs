@@ -19,6 +19,15 @@ public class PlayerMove : MonoBehaviour
         float y = GetComponent<Rigidbody>().velocity.y;
         float z = GetComponent<Rigidbody>().velocity.z;
 
+        float moveSpeed = 0;
+        if (Input.GetKeyDown("left shift"))
+        {
+            moveSpeed = 8;
+        } else
+        {
+            moveSpeed = 5;
+        }
+
         if(Input.GetKeyDown("space") && (GetComponent<Rigidbody>().velocity.y == 0))
         {
             y = 5;
@@ -26,26 +35,26 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKey("up"))
         {
-            z = 5;
+            z = moveSpeed;
         }
 
 
         if (Input.GetKey("down"))
         {
-            z = -5;
+            z = -moveSpeed;
         }
 
         if (Input.GetKey("left"))
         {
-            x = -5;
+            x = -moveSpeed;
         }
 
         if (Input.GetKey("right"))
         {
-            x = 5;
+            x = moveSpeed;
         }
 
-        if (Input.GetKey("r"))
+        if (Input.GetKey("r") || (transform.position.y < -50))
         {
             transform.position = myStartPosition;
             x = 0;
