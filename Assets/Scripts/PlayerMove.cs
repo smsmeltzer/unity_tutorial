@@ -38,7 +38,6 @@ public class PlayerMove : MonoBehaviour
             z = moveSpeed;
         }
 
-
         if (Input.GetKey("down"))
         {
             z = -moveSpeed;
