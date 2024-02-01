@@ -19,6 +19,15 @@ public class PlayerMove : MonoBehaviour
         float y = GetComponent<Rigidbody>().velocity.y;
         float z = GetComponent<Rigidbody>().velocity.z;
 
+        float moveSpeed = 0;
+        if (Input.GetKey("left shift"))
+        {
+            moveSpeed = 8;
+        } else
+        {
+            moveSpeed = 5;
+        }
+
         if(Input.GetKeyDown("space") && (GetComponent<Rigidbody>().velocity.y == 0))
         {
             y = 5;
@@ -26,26 +35,30 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKey("up") || Input.GetKey("w"))
         {
-            z = 5;
+            z = moveSpeed;
         }
 
+<<<<<<< HEAD
 
         if (Input.GetKey("down") || Input.GetKey("s"))
+=======
+        if (Input.GetKey("down"))
+>>>>>>> e01a74c80db7a360136f2511ed89316a85d986ec
         {
-            z = -5;
+            z = -moveSpeed;
         }
 
         if (Input.GetKey("left") || Input.GetKey("a"))
         {
-            x = -5;
+            x = -moveSpeed;
         }
 
         if (Input.GetKey("right") || Input.GetKey("d"))
         {
-            x = 5;
+            x = moveSpeed;
         }
 
-        if (Input.GetKey("r"))
+        if (Input.GetKey("r") || (transform.position.y < -50))
         {
             transform.position = myStartPosition;
             x = 0;
@@ -54,5 +67,15 @@ public class PlayerMove : MonoBehaviour
         }
 
         GetComponent<Rigidbody>().velocity = new Vector3(x, y, z);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log(other.collider.gameObject.tag);
+        if (other.collider.gameObject.tag == "obstacle")
+        {
+            transform.position = myStartPosition;
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        }
     }
 }
