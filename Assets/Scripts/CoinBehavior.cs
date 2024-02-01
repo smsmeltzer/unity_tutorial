@@ -12,6 +12,7 @@ public class CoinBehavior : MonoBehaviour
     private MeshRenderer myRenderer;
     private AudioSource myAudio;
 
+    [SerializeField] GameObject myPrefab;
     private UIManager myUIManager;
 
     // Start is called before the first frame update
@@ -21,8 +22,9 @@ public class CoinBehavior : MonoBehaviour
         myAudio = GetComponent<AudioSource>();
         myRenderer = GetComponent<MeshRenderer>();
         myCollider = GetComponent<SphereCollider>();
+        myUIManager = myPrefab.GetComponent<UIManager>();
 
-        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -37,7 +39,6 @@ public class CoinBehavior : MonoBehaviour
         myRenderer.enabled = false;
         myCollider.enabled = false;
 
-        UIManager.addScore(1);
+        myUIManager.addScore(1);
     }
-
 }

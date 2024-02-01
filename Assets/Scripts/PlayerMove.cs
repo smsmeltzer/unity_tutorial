@@ -38,12 +38,7 @@ public class PlayerMove : MonoBehaviour
             z = moveSpeed;
         }
 
-<<<<<<< HEAD
-
         if (Input.GetKey("down") || Input.GetKey("s"))
-=======
-        if (Input.GetKey("down"))
->>>>>>> e01a74c80db7a360136f2511ed89316a85d986ec
         {
             z = -moveSpeed;
         }
