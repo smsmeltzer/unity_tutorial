@@ -24,23 +24,23 @@ public class PlayerMove : MonoBehaviour
             y = 5;
         }
 
-        if (Input.GetKey("up"))
+        if (Input.GetKey("up") || Input.GetKey("w"))
         {
             z = 5;
         }
 
 
-        if (Input.GetKey("down"))
+        if (Input.GetKey("down") || Input.GetKey("s"))
         {
             z = -5;
         }
 
-        if (Input.GetKey("left"))
+        if (Input.GetKey("left") || Input.GetKey("a"))
         {
             x = -5;
         }
 
-        if (Input.GetKey("right"))
+        if (Input.GetKey("right") || Input.GetKey("d"))
         {
             x = 5;
         }
