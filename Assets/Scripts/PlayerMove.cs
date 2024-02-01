@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
         float z = GetComponent<Rigidbody>().velocity.z;
 
         float moveSpeed = 0;
-        if (Input.GetKeyDown("left shift"))
+        if (Input.GetKey("left shift"))
         {
             moveSpeed = 8;
         } else
@@ -62,5 +62,15 @@ public class PlayerMove : MonoBehaviour
         }
 
         GetComponent<Rigidbody>().velocity = new Vector3(x, y, z);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log(other.collider.gameObject.tag);
+        if (other.collider.gameObject.tag == "obstacle")
+        {
+            transform.position = myStartPosition;
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        }
     }
 }
