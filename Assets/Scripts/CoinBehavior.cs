@@ -13,7 +13,7 @@ public class CoinBehavior : MonoBehaviour
     private AudioSource myAudio;
 
     [SerializeField] GameObject myPrefab;
-    private UIManager myUIManager;
+    public UIManager myUIManager;
 
     // Start is called before the first frame update
     void Start()
