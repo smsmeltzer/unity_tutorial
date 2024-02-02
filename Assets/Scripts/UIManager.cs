@@ -27,4 +27,9 @@ public class UIManager : MonoBehaviour
         _score += pts;
         _scoreText.text = "Coins Collected: " + _score.ToString();
     }
+
+    public int getScore()
+    {
+        return _score;
+    }
 }
